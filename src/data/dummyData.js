@@ -32,8 +32,8 @@ exports.getCategories = function(){
 
 exports.getItems = function(data = simplyData){
   let items = {};
-  Object.keys(data).map(function(k,i){
-    Object.keys(data[k].items).map(function(key,j,c){
+  Object.keys(data).map(function(k,i){ // eslint-disable-line  array-callback-return
+    Object.keys(data[k].items).map(function(key,j,c){ // eslint-disable-line  array-callback-return
       data[k].items[key].category=[k];
       items[key]= data[k].items[key]
     })

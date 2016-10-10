@@ -21,7 +21,6 @@ export default class EditGift extends React.Component{
   };
   render() {
     const item = this.props.gifts[this.props.params.giftId] || {name:'', price:0,category:[]}
-    console.log(item);
     item.categories = item.category.join(",");
     return (
       <div>

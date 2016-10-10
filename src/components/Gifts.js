@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import dummyData from '../data/dummyData';
-
 class GiftItem extends React.Component {
 
   render(){

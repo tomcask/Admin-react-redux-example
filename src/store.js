@@ -1,6 +1,7 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { syncHistoryWithStore} from 'react-router-redux';
 import { browserHistory } from 'react-router';
+import createLogger from 'redux-logger';
 
 // import the root reducer
 import rootReducer from './reducers/index';
@@ -14,7 +15,10 @@ const defaultState = {
   categories
 };
 
-const store = createStore(rootReducer, defaultState);
+
+const logger = createLogger();
+
+const store = createStore(rootReducer, defaultState, applyMiddleware(logger));
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

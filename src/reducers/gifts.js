@@ -1,5 +1,5 @@
 function gifts(state = [], action) {
-  console.log("reducer gifts",action.type, action, state);
+
   const newstate = {...state};
   switch(action.type){
 		case 'EDIT_CATEGORY':

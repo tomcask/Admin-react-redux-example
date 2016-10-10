@@ -1,11 +1,10 @@
 function categories(state = [], action) {
-  console.log("reducer categories\n\n", state, action);
 
+	let newState = [...state];
 	switch(action.type){
 		case 'FETCH_CATEGORIES':
 			return action.categories
 		case 'EDIT_CATEGORY':
-			const newState = [...state];
 			newState[action.i] = action.name;
 			return newState;
 		case 'REMOVE_CATEGORY':
@@ -15,6 +14,15 @@ function categories(state = [], action) {
        ]
     case 'ADD_CATEGORY':
       return [...state, action.nameCategory];
+    case 'ADD_GIFT':
+    	let res = 0;
+      action.category.map((key)=>{
+			  res = state.filter((el)=> el===key)
+			  if (!res.length){
+			    newState = [...newState, key ];
+			  }
+			});
+  		return newState
 		default:
 			return state;
 	}
