@@ -1,5 +1,5 @@
 export default [
 	{"name":"Home"},
-	{"name":"Kitchen"},
-	{"name":"Toys"}
+	{"name":"Burgers"},
+	{"name":"Drinks"}
 ]

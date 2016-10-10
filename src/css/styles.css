@@ -1,0 +1,22 @@
+
+body{
+  background: white;
+}
+
+.main{
+  display:flex;
+  flex-wrap:wrap;
+  max-width:1200px;
+  margin: 0 auto;
+}
+
+.sidebar{
+ 	float: left;
+  width: 200px;
+}
+.content{
+ 	float:left;
+ }
+.gift-price{
+	margin-left: 30px;
+}
