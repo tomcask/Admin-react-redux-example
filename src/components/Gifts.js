@@ -1,52 +1,52 @@
 import React from 'react';
+import { Link } from 'react-router';
+
 import dummyData from '../data/dummyData';
 
 class GiftItem extends React.Component {
+
   render(){
     return(
-      <div>
-        <span>{ this.props.name }</span>
-      </div>
+      <li key={this.props.index}>
+        <span className="gift-name">{this.props.item.name}</span>
+        <span className="gift-price">${this.props.item.price}</span>
+        <Link to={`/gifts/${this.props.item.name}`}  className="edit-category" >Edit</Link>
+        <button className="remove-gift" 
+          onClick={this.props.removeGift.bind(null, this.props.item.name, this.props.index)}>&times;</button>
+      </li>
     )
   }
 }
 
-// const category = data.lookupCategory(params.category)
-
-//   return (
-//     <div>
-//       <h2>{category.name} Gifts</h2>
-//       <ul>
-//         {category.items.map((item, index) => (
-//           <li key={index}>
-//             <Link to={`/category/${category.name}/${item.name}`}>{item.name}</Link>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   )
 
 
 class Gifts extends React.Component {
   render() {
-    const params = this.props.params;
-    console.log(this.props, params);
 
-    const category = dummyData.lookupCategory(params.categoryId)
-    console.log(category);
+    const getItemsCategory = function(category, gifts){
+      let giftsOrdered=[]; 
+      Object.keys(gifts).map(function(k,i,c){
+        gifts[k].category.map((val)=>{
+          val===category && giftsOrdered.push(gifts[k]);   
+        })
+        
+      });
+      return giftsOrdered;
+    };
+
+    const gifts = getItemsCategory( 
+      this.props.params.categoryId, 
+      this.props.gifts
+    );
     return (
       <div>
-        <h2>{category.name} Gifts</h2>
-         {/*this.props.gifts.map((gift, idx) => <GiftItem key={idx} name={gift.name} />)*/}
+        <h2>{this.props.params.categoryId} Gifts</h2>
          <ul>
-            {category.items.map((item, index) => (
-          <li key={index}>
-            <span className="gift-name">{item.name}</span>
-            <span className="gift-price">${item.price}</span>
-          </li>
-        ))}
+            {gifts.map((item, index) => (
+              <GiftItem {...this.props}  key={index} item={item} index={index}/>
+            ))}
          </ul>
-
+        <Link to={'/gifts/'}  className="add-gift" >Add Gift</Link>
       </div>
     )
   }

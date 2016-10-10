@@ -1,14 +1,14 @@
-import { createStore, compose } from 'redux';
+import { createStore } from 'redux';
 import { syncHistoryWithStore} from 'react-router-redux';
 import { browserHistory } from 'react-router';
 
 // import the root reducer
 import rootReducer from './reducers/index';
+import dummyData from './data/dummyData';
 
-import categories from './data/categories';
-import gifts from './data/gifts';
+const categories = dummyData.getCategories();
+const gifts = dummyData.getItems();
 
-// create an object for the default data
 const defaultState = {
   gifts,
   categories
