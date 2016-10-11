@@ -8,7 +8,7 @@ class GiftItem extends React.Component {
       <li key={this.props.index}>
         <span className="gift-name">{this.props.item.name}</span>
         <span className="gift-price">${this.props.item.price}</span>
-        <Link to={`/gifts/${this.props.item.name}`}  className="edit-category" >Edit</Link>
+        <Link to={`/gifts/${this.props.item.name}/`}  className="edit-category" >Edit</Link>
         <button className="remove-gift" 
           onClick={this.props.removeGift.bind(null, this.props.item.name, this.props.index)}>&times;</button>
       </li>

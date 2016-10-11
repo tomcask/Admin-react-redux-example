@@ -3,11 +3,24 @@ body{
   background: white;
 }
 
-.main{
-  display:flex;
+
+#main{
+  display: flex;
   flex-wrap:wrap;
   max-width:1200px;
-  margin: 0 auto;
+  margin: 20px auto;
+}
+
+.header, {
+display: flex;
+    margin: 20px 10px;
+
+}
+
+.footer{
+ display: inline-block;
+ margin: 20px 10px;
+ 
 }
 
 .sidebar{
